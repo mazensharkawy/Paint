@@ -7,7 +7,7 @@ package paint;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import javax.swing.Box;
@@ -69,12 +69,18 @@ public class Circle extends myShape implements Shape{
 
     @Override
     public void setProperties(Map<String, Double> properties) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        diameter= properties.get("diameter").intValue();
+        x= properties.get("x").intValue();
+        y= properties.get("y").intValue();
     }
 
     @Override
     public Map<String, Double> getProperties() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HashMap<String, Double> properties = new HashMap<>();
+        properties.put("diameter",(double)diameter);
+        properties.put("x",(double)x);
+        properties.put("y",(double)y);
+        return properties;
     }
 
 

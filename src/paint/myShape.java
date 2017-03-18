@@ -40,9 +40,8 @@ public abstract class myShape implements Shape{
     public abstract void setProperties(Map<String, Double> properties);
 
     @Override
-    public Map<String, Double> getProperties() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public abstract Map<String, Double> getProperties();
+        
 
     @Override
     public final void setColor(Color color) {

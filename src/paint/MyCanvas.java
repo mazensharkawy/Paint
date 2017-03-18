@@ -71,7 +71,15 @@ public class MyCanvas extends JPanel implements DrawingEngine{
 
     @Override
     public void removeShape(Shape shape) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        /*for(int i=0;i<shapes.size();i++){
+            if(shapes.get(i).getPosition()!=shape.getPosition()) continue;
+            if(shapes.get(i).getProperties().size()!=shape.getProperties().size()) continue;
+            if(shapes.get(i).getColor()!=shape.getColor()) continue;
+            shapes.r(i);
+                   
+        }*/
+        shapes.remove(shape);
+        this.repaint(); 
     }
 
     @Override
