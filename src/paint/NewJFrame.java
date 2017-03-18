@@ -6,10 +6,11 @@
 package paint;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.net.URI;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
@@ -320,10 +321,8 @@ public class NewJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jButton13)
                             .addGap(6, 6, 6)
@@ -335,7 +334,10 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jButton14)
                             .addGap(6, 6, 6)
-                            .addComponent(jButton11))))
+                            .addComponent(jButton11)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -599,7 +601,7 @@ public class NewJFrame extends javax.swing.JFrame {
         MyCanvas panel=(MyCanvas)jPanel2;
         int i=jComboBox1.getSelectedIndex();
         try{
-            myShape s = (myShape)panel.shapes.get(i).clone();
+            Shape s = (Shape)panel.shapes.get(i).clone();
             Point position = s.getPosition();
             s.setPosition(new Point(position.x+10,position.y-10));
             panel.addShape(s);
@@ -607,7 +609,7 @@ public class NewJFrame extends javax.swing.JFrame {
             name=name.substring(0,name.length()-1);
             counter++;
             
-            System.out.println(this.jComboBox1.getItemAt(i));
+            
             jComboBox1.addItem(name+counter);
             jComboBox1.setSelectedIndex(counter-1);
         }catch(CloneNotSupportedException CloneNotSupportedException){
@@ -617,28 +619,36 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
-         /*JFileChooser f = new JFileChooser();
+         JFileChooser f = new JFileChooser();
          f.setFileSelectionMode(JFileChooser.FILES_ONLY); 
          f.showSaveDialog(null);
-         f.
-         if(f==null) return;
+         
+         if(f.getSelectedFile()==null) return;
         try{
+            
             String inputValue = JOptionPane.showInputDialog("Please input the name of your class");
             this.jLabel3.setText(""+f.getSelectedFile());
-            URI path = new URI(""+f.getSelectedFile());
+            String stringPath= java.net.URLEncoder.encode(f.getSelectedFile().toString(),"UTF-8");
+            //String inputValue="RoundRectangle";
+            
+            URL path = f.getSelectedFile().toURI().toURL();
             this.jLabel3.setText("URL created");
-            URI[] paths={path}; 
-            URLClassLoader child = new URLClassLoader (paths, this.getClass().getClassLoader());
+            URL[] paths={path}; 
+            URLClassLoader child = new URLClassLoader(paths, this.getClass().getClassLoader());            
             this.jLabel3.setText("Loaded");
-            Class classToLoad = Class.forName ("com.paint."+inputValue, true, child);
-            Method method = classToLoad.getDeclaredMethod ("myMethod");
-            Object instance = classToLoad.newInstance();
-            Object result = method.invoke (instance);
-            Shape shape = (Shape)result ;
+            Class<?> classToLoad = Class.forName ("paint."+inputValue, true, child);
+            
+            Constructor construct = classToLoad.getConstructor(new Class[]{});
+            Method method = classToLoad.getDeclaredMethod("draw",new Class[]{Graphics.class});
+            Object instance = construct.newInstance();
+            //Object result = method.invoke (instance);
+            Shape shape = (Shape)instance ;
             MyCanvas panel=(MyCanvas)jPanel2;
             panel.addShape(shape);
             this.jLabel3.setText("size"+panel.shapes.size());
-        }catch(Exception e ){}
+            this.jComboBox1.addItem(inputValue+" "+counter++);
+            panel.installPluginShape(((Class<? extends Shape>)classToLoad));
+        }catch(Exception e ){this.jLabel3.setText(e.toString());}
             //this.jLabel3.setText("Plugin Loaded");*/
     }//GEN-LAST:event_jButton18ActionPerformed
 
