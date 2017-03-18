@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 public class MyCanvas extends JPanel implements DrawingEngine{
     ArrayList<Shape> shapes;
     ArrayList<Shape> unDoneShapes;
+    ArrayList<Class<? extends Shape>> supportedShapes;
     
     private int squareX = 50;
     private int squareY = 50;
@@ -32,6 +33,13 @@ public class MyCanvas extends JPanel implements DrawingEngine{
         shapes= new ArrayList<>();
         unDoneShapes= new ArrayList<>();        
         setBorder(BorderFactory.createLineBorder(Color.black));
+        supportedShapes=new ArrayList<>();
+        supportedShapes.add(Rectangle.class);
+        supportedShapes.add(Circle.class);
+        supportedShapes.add(Triangle.class);
+        supportedShapes.add(Line.class);
+        supportedShapes.add(Square.class);
+        supportedShapes.add(Oval.class);
         
     }  
     public MyCanvas(MyCanvas oldCanvas) {
@@ -70,14 +78,7 @@ public class MyCanvas extends JPanel implements DrawingEngine{
     }
 
     @Override
-    public void removeShape(Shape shape) {
-        /*for(int i=0;i<shapes.size();i++){
-            if(shapes.get(i).getPosition()!=shape.getPosition()) continue;
-            if(shapes.get(i).getProperties().size()!=shape.getProperties().size()) continue;
-            if(shapes.get(i).getColor()!=shape.getColor()) continue;
-            shapes.r(i);
-                   
-        }*/
+    public void removeShape(Shape shape) {        
         shapes.remove(shape);
         this.repaint(); 
     }
@@ -94,12 +95,12 @@ public class MyCanvas extends JPanel implements DrawingEngine{
 
     @Override
     public List<Class<? extends Shape>> getSupportedShapes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return supportedShapes;
     }
 
     @Override
     public void installPluginShape(Class<? extends Shape> shapeClass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        supportedShapes.add(shapeClass);
     }
 
     @Override
@@ -109,8 +110,8 @@ public class MyCanvas extends JPanel implements DrawingEngine{
     }
 
     @Override
-    public void redo() {
-        
+    public void redo() 
+    {        
         shapes.add(unDoneShapes.remove(unDoneShapes.size()-1));
         this.repaint();
     }
