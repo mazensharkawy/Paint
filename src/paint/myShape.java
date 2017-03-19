@@ -16,6 +16,7 @@ import java.util.Map;
  */
 public abstract class myShape implements Shape{
     Color color;
+    Color fillcolor;
     int x;
     int y;
     int result;
@@ -31,10 +32,7 @@ public abstract class myShape implements Shape{
     @Override
     public final Point getPosition() {
         return new Point(x,y);
-    }
-
-
-    
+    }    
 
     @Override
     public abstract void setProperties(Map<String, Double> properties);
@@ -55,12 +53,12 @@ public abstract class myShape implements Shape{
 
     @Override
     public final void setFillColor(Color color) {
-        this.color=color; 
+        this.fillcolor=color; 
     }
 
     @Override
     public final Color getFillColor() {
-        return this.color; 
+        return this.fillcolor; 
     }
 
     @Override
