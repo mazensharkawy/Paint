@@ -69,17 +69,13 @@ public class Circle extends myShape implements Shape{
 
     @Override
     public void setProperties(Map<String, Double> properties) {
-        diameter= properties.get("diameter").intValue();
-        x= properties.get("x").intValue();
-        y= properties.get("y").intValue();
+        diameter= properties.get("diameter").intValue();        
     }
 
     @Override
     public Map<String, Double> getProperties() {
         HashMap<String, Double> properties = new HashMap<>();
-        properties.put("diameter",(double)diameter);
-        properties.put("x",(double)x);
-        properties.put("y",(double)y);
+        properties.put("diameter",(double)diameter);      
         return properties;
     }
 

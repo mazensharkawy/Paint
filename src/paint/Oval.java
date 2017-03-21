@@ -17,6 +17,7 @@ package paint;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import javax.swing.Box;
@@ -81,12 +82,16 @@ public class Oval extends myShape implements Shape{
    
     @Override
     public void setProperties(Map<String, Double> properties) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.hAxis=properties.get("hAxis").intValue();
+        this.vAxis=properties.get("vAxis").intValue();
     }
 
     @Override
     public Map<String, Double> getProperties() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HashMap<String,Double> properties =new HashMap<>();
+        properties.put("hAxis", (double)hAxis);
+        properties.put("vAxis", (double)vAxis);
+        return properties;
     }
 
    

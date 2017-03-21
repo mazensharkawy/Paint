@@ -14,9 +14,17 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -84,6 +92,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton17 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,7 +109,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 362, Short.MAX_VALUE)
+            .addGap(0, 374, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,6 +271,13 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton20.setText("Edit");
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -270,37 +286,43 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(6, 6, 6)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(6, 6, 6)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(6, 6, 6)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(6, 6, 6)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton7)
-                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(6, 6, 6)
-                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(6, 6, 6)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton7)
+                                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(5, 5, 5))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(11, 11, 11)
-                            .addComponent(jButton18))
-                        .addComponent(jButton19)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton19))
+                            .addGap(9, 9, 9)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton15)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,7 +389,9 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jButton17)
                             .addComponent(jButton18))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton19)
+                            .addComponent(jButton20))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 13, Short.MAX_VALUE))
@@ -662,6 +686,76 @@ public class NewJFrame extends javax.swing.JFrame {
         this.jComboBox1.remove(this.jComboBox1.getSelectedIndex());
     }//GEN-LAST:event_jButton19ActionPerformed
 
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        // TODO add your handling code here:
+        int i=jComboBox1.getSelectedIndex();
+        MyCanvas canvas=(MyCanvas)jPanel2;
+        HashMap<String,Double> properties =  (HashMap<String,Double>) canvas.shapes.get(i).getProperties();
+        Set set = properties.entrySet();      
+        // Get an iterator
+        Iterator iterator = set.iterator();
+        int result;
+        
+        JPanel myPanel = new JPanel();
+        Point p =  canvas.shapes.get(i).getPosition(); 
+        myPanel.add(new JLabel("X"));
+        JTextField xField = new JTextField(5);
+        xField.setText(""+p.getX());
+        myPanel.add(xField);        
+        myPanel.add(new JLabel("Y"));        
+        JTextField yField = new JTextField(5);
+        yField.setText(""+p.getY());
+        myPanel.add(yField);
+        ArrayList<Object> panelObjects= new ArrayList<>();
+        // Display elements
+         while(iterator.hasNext()) {
+            Map.Entry me = (Map.Entry)iterator.next();
+            panelObjects.add(new JLabel((String)me.getKey()));
+            myPanel.add((JLabel)panelObjects.get(panelObjects.size()-1));
+            JTextField newField = new JTextField(5);
+             panelObjects.add(newField);
+            myPanel.add((JTextField)panelObjects.get(panelObjects.size()-1));
+            newField.setText(""+me.getValue());
+            /*System.out.print(me.getKey() + ": ");
+            System.out.println(me.getValue());*/
+        }
+        
+        
+       
+        result = JOptionPane.showConfirmDialog(null, myPanel, 
+               "Please Enter Values", JOptionPane.OK_CANCEL_OPTION);
+        if(result==JOptionPane.OK_OPTION){            
+            try{
+                double x=Double.parseDouble(xField.getText());
+                double y=Double.parseDouble(yField.getText());
+                canvas.shapes.get(i).setPosition(new Point((int)x,(int)y));
+            for(int n=0;n<panelObjects.size();n++){
+                
+                JLabel label= (JLabel)panelObjects.get(n);
+                String key= label.getText();
+                JTextField txtField= (JTextField)panelObjects.get(++n);
+                double value = Double.parseDouble(txtField.getText());
+                properties.put(key,value);
+                
+            }
+            canvas.shapes.get(i).setProperties(properties);
+            canvas.repaint();
+            }catch(Exception e){
+                
+                System.out.println(e.toString());
+                jLabel3.setText("Invalid Input");
+            }
+                
+            }
+            
+            /*width=Integer.parseInt(widthField.getText());
+            height=Integer.parseInt(lengthField.getText());
+            x=Integer.parseInt(xField.getText());
+            y=Integer.parseInt(yField.getText());*/
+        
+      
+    }//GEN-LAST:event_jButton20ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -718,6 +812,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

@@ -69,18 +69,14 @@ public class Square extends myShape implements Shape {
    
 
     @Override
-    public void setProperties(Map<String, Double> properties) {
-        x=properties.get("x").intValue();
-        y=properties.get("y").intValue();
+    public void setProperties(Map<String, Double> properties) {        
         sideLength=properties.get("sideLength").intValue();
         
     }
 
     @Override
     public Map<String, Double> getProperties() {
-        HashMap<String, Double> properties = new HashMap<>();
-         properties.put("x",((double)x));
-         properties.put("y",((double)y));
+        HashMap<String, Double> properties = new HashMap<>();         
          properties.put("sideLength",((double)sideLength));
                 
 

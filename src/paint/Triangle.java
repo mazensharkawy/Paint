@@ -72,18 +72,14 @@ public class Triangle extends myShape implements Shape {
     
    
     @Override
-    public void setProperties(Map<String, Double> properties) {
-        x=properties.get("x").intValue();
-        y=properties.get("y").intValue();
+    public void setProperties(Map<String, Double> properties) {       
         width=properties.get("width").intValue();
         height=properties.get("height").intValue();
     }
 
     @Override
     public Map<String, Double> getProperties() {
-        HashMap<String, Double> properties = new HashMap<>();
-         properties.put("x",((double)x));
-         properties.put("y",((double)y));
+        HashMap<String, Double> properties = new HashMap<>();         
          properties.put("width",((double)width));
          properties.put("height",((double)height));       
 
