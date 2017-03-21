@@ -572,6 +572,7 @@ public class NewJFrame extends javax.swing.JFrame {
         }
         --counter;
         int i =((((MyCanvas)jPanel2)).shapes.size()-1);
+        if(undoneItems.size()>=20) undoneItems.remove(0);
         undoneItems.add(this.jComboBox1.getItemAt(i));
         jComboBox1.removeItemAt(i);
         jLabel3.setText("");

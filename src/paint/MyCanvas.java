@@ -105,6 +105,7 @@ public class MyCanvas extends JPanel implements DrawingEngine{
 
     @Override
     public void undo() {
+        if(unDoneShapes.size()>=20) unDoneShapes.remove(0);
         unDoneShapes.add(shapes.remove(shapes.size()-1));
         this.repaint();
     }
