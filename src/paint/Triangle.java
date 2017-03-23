@@ -39,7 +39,7 @@ public class Triangle extends myShape implements Shape {
         Random rand=new Random();
         x= rand.nextInt(100);
         y=rand.nextInt(100)+20;
-        color=Color.RED;
+        /*color=Color.RED;
         JTextField xField = new JTextField(5);
         JTextField yField = new JTextField(5);
         JTextField lengthField = new JTextField(5);
@@ -67,7 +67,7 @@ public class Triangle extends myShape implements Shape {
             height=Integer.parseInt(lengthField.getText());
             x=Integer.parseInt(xField.getText());
             y=Integer.parseInt(yField.getText());
-        }
+        }*/
     }
     
    

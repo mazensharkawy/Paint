@@ -682,8 +682,10 @@ public class NewJFrame extends javax.swing.JFrame {
         MyCanvas panel=(MyCanvas)jPanel2;
         if(counter==0) {this.jLabel3.setText("Nothing to Remove");return;}
         counter--;
-        panel.removeShape(panel.shapes.get(this.jComboBox1.getSelectedIndex()));       
-        this.jComboBox1.remove(this.jComboBox1.getSelectedIndex());
+        int i=this.jComboBox1.getSelectedIndex();
+        panel.removeShape(panel.shapes.get(i));       
+        jComboBox1.removeItemAt(i);
+        jLabel3.setText("");
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed

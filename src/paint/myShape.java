@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +20,7 @@ public abstract class myShape implements Shape{
     Color fillcolor;
     int x;
     int y;
-    int result;
+    int result=JOptionPane.OK_CANCEL_OPTION;
     @Override
     public abstract Object clone() throws CloneNotSupportedException;
 
