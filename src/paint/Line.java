@@ -23,12 +23,10 @@ public class Line extends Square implements Shape{
     
     public Line() {
         super();
+        sideLength=100;
     }
 
-    @Override
-    public int defaultLength() {
-        return 100; //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     @Override
     public void draw(Graphics canvas) {

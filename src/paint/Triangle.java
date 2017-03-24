@@ -11,11 +11,6 @@ import java.awt.Point;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import javax.swing.Box;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -30,6 +25,7 @@ public class Triangle extends myShape implements Shape {
         x=s.x;
         y=s.y;
         color=s.color;
+        fillcolor=s.fillcolor;
         width=s.width;
         height=s.height;        
         
@@ -38,36 +34,12 @@ public class Triangle extends myShape implements Shape {
     public Triangle(){
         Random rand=new Random();
         x= rand.nextInt(100);
-        y=rand.nextInt(100)+20;
-        /*color=Color.RED;
-        JTextField xField = new JTextField(5);
-        JTextField yField = new JTextField(5);
-        JTextField lengthField = new JTextField(5);
-        JTextField widthField = new JTextField(5);
-        lengthField.setText("50");
-        widthField.setText("100");
-        xField.setText(""+x);
-        yField.setText(""+y);
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("x:"));
-        myPanel.add(xField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer 
-        myPanel.add(new JLabel("y:"));
-        myPanel.add(yField);
-        myPanel.add(Box.createHorizontalStrut(15));
-        myPanel.add(new JLabel("Height: "));
-        myPanel.add(lengthField);
-        myPanel.add(Box.createHorizontalStrut(15));
-        myPanel.add(new JLabel("Base: "));
-        myPanel.add(widthField);
-        result = JOptionPane.showConfirmDialog(null, myPanel, 
-               "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
-        if(result==JOptionPane.OK_OPTION){
-            width=Integer.parseInt(widthField.getText());
-            height=Integer.parseInt(lengthField.getText());
-            x=Integer.parseInt(xField.getText());
-            y=Integer.parseInt(yField.getText());
-        }*/
+        y=rand.nextInt(100)+20;        
+        height=50;
+        width=100;
+        color=Color.RED;
+        fillcolor=Color.RED;
+        
     }
     
    

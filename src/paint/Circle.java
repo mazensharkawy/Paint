@@ -10,11 +10,6 @@ import java.awt.Graphics;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import javax.swing.Box;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -35,33 +30,11 @@ public class Circle extends myShape implements Shape{
     
     public Circle() {
         this.color=Color.RED;
+        this.fillcolor=Color.RED;
         Random rand=new Random();
         x= rand.nextInt(100);
         y=rand.nextInt(100);
-        JTextField xField = new JTextField(5);
-        JTextField yField = new JTextField(5);
-        JTextField diameterField = new JTextField(5);       
-        
-        diameterField.setText("70");
-        xField.setText(""+x);
-        yField.setText(""+y);
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("x:"));
-        myPanel.add(xField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer 
-        myPanel.add(new JLabel("y:"));
-        myPanel.add(yField);
-        myPanel.add(Box.createHorizontalStrut(15));
-        myPanel.add(new JLabel("Diameter: "));
-        myPanel.add(diameterField);
-       
-        result = JOptionPane.showConfirmDialog(null, myPanel, 
-               "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
-        if(result==JOptionPane.OK_OPTION){
-            diameter=Integer.parseInt(diameterField.getText());            
-            x=Integer.parseInt(xField.getText());
-            y=Integer.parseInt(yField.getText());
-        }
+        diameter=70;
     }
     
     
@@ -91,8 +64,7 @@ public class Circle extends myShape implements Shape{
     public Object clone() throws CloneNotSupportedException{
         Circle shape= new Circle(this);
         shape.x+=10;
-        shape.y=+10;      
-        
+        shape.y+=10;     
         return shape;
     }
     

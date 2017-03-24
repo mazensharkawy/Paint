@@ -10,11 +10,6 @@ import java.awt.Graphics;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import javax.swing.Box;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -29,41 +24,19 @@ public class Square extends myShape implements Shape {
         x=s.x;
         y=s.y;
         color=s.color;
+        fillcolor=s.color;
         sideLength=s.sideLength;
         
     }
     
-    public Square(){        
+    public Square(){
+        
         Random rand=new Random();
         x= rand.nextInt(100);
         y=rand.nextInt(100);
-        color=Color.RED;        
-        JTextField xField = new JTextField(5);
-        JTextField yField = new JTextField(5);
-        JTextField sideLengthField = new JTextField(5);
-        
-        sideLengthField.setText(""+defaultLength());
-        
-        xField.setText(""+x);
-        yField.setText(""+y);
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("x:"));
-        myPanel.add(xField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer 
-        myPanel.add(new JLabel("y:"));
-        myPanel.add(yField);
-        myPanel.add(Box.createHorizontalStrut(15));
-        myPanel.add(new JLabel("Length: "));
-        myPanel.add(sideLengthField);
-        
-        result = JOptionPane.showConfirmDialog(null, myPanel, 
-               "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
-        if(result==JOptionPane.OK_OPTION){            
-            sideLength=Integer.parseInt(sideLengthField.getText());
-            x=Integer.parseInt(xField.getText());
-            y=Integer.parseInt(yField.getText());
-        }
-        
+        color=Color.RED;
+        fillcolor=Color.RED;    
+        sideLength=70;
     }
     
    
@@ -99,10 +72,7 @@ public class Square extends myShape implements Shape {
         shape.y+=10; 
 
         return shape;
-    }
+    }    
     
-    public int defaultLength(){
-        return 50;
-    }
    
 }

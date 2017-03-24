@@ -20,7 +20,7 @@ public abstract class myShape implements Shape{
     Color fillcolor;
     int x;
     int y;
-    int result=JOptionPane.OK_CANCEL_OPTION;
+    
     @Override
     public abstract Object clone() throws CloneNotSupportedException;
 

@@ -411,13 +411,12 @@ public class NewJFrame extends javax.swing.JFrame {
         panel.unDoneShapes= new ArrayList<>();
         jLabel3.setText("");
         Circle r = new Circle();
-        if(r.result==JOptionPane.CANCEL_OPTION){            
-            return;
-        }
+        
         counter++;
         jComboBox1.addItem("Circle "+counter);
         panel.addShape(r);
         jComboBox1.setSelectedIndex(counter-1);
+        jButton20ActionPerformed(evt);
         jComboBox1.repaint();       
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -509,13 +508,12 @@ public class NewJFrame extends javax.swing.JFrame {
         panel.unDoneShapes= new ArrayList<>();
         jLabel3.setText("");
         Oval r = new Oval();
-        if(r.result==JOptionPane.CANCEL_OPTION){
-            return;
-        }
+        
         counter++;
         jComboBox1.addItem("Oval "+counter);
         panel.addShape(r);
         jComboBox1.setSelectedIndex(counter-1);
+        jButton20ActionPerformed(evt);        
         jComboBox1.repaint(); 
     }//GEN-LAST:event_jButton11ActionPerformed
 
@@ -526,13 +524,12 @@ public class NewJFrame extends javax.swing.JFrame {
         panel.unDoneShapes= new ArrayList<>();
         jLabel3.setText("");
         Rectangle r = new Rectangle(); 
-        if(r.result==JOptionPane.CANCEL_OPTION){
-            return;
-        }
+        
         counter++;
         jComboBox1.addItem("Rectangle "+counter);
         panel.addShape(r);
         jComboBox1.setSelectedIndex(counter-1);
+        jButton20ActionPerformed(evt);
         jComboBox1.repaint();        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -542,13 +539,12 @@ public class NewJFrame extends javax.swing.JFrame {
         panel.unDoneShapes= new ArrayList<>();
         jLabel3.setText("");
         Triangle r = new Triangle();
-        if(r.result==JOptionPane.CANCEL_OPTION){
-            return;
-        }
+        
         counter++;
         jComboBox1.addItem("Triangle "+counter);
         panel.addShape(r);
         jComboBox1.setSelectedIndex(counter-1);
+        jButton20ActionPerformed(evt);
         jComboBox1.repaint();
     }//GEN-LAST:event_jButton12ActionPerformed
 
@@ -559,13 +555,12 @@ public class NewJFrame extends javax.swing.JFrame {
         panel.unDoneShapes= new ArrayList<>();
         jLabel3.setText("");
         Line r = new Line();
-        if(r.result==JOptionPane.CANCEL_OPTION){
-            return;
-        }
+        
         counter++;
         jComboBox1.addItem("Line Segment "+counter);        
         panel.addShape(r);
         jComboBox1.setSelectedIndex(counter-1);
+        jButton20ActionPerformed(evt);
         jComboBox1.repaint();
     }//GEN-LAST:event_jButton13ActionPerformed
 
@@ -576,14 +571,13 @@ public class NewJFrame extends javax.swing.JFrame {
         panel.unDoneShapes= new ArrayList<>();
         jLabel3.setText("");
         Square r = new Square();
-        if(r.result==JOptionPane.CANCEL_OPTION){
-            return;
-        }
+        
         counter++;
         jComboBox1.addItem("Square "+counter);
         
         panel.addShape(r);
         jComboBox1.setSelectedIndex(counter-1);
+        jButton20ActionPerformed(evt);
         jComboBox1.repaint();
     }//GEN-LAST:event_jButton14ActionPerformed
 

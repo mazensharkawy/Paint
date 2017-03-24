@@ -20,11 +20,6 @@ import java.awt.Graphics;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import javax.swing.Box;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -46,38 +41,12 @@ public class Oval extends myShape implements Shape{
     
     public Oval() {
         this.color=Color.RED;
+        this.fillcolor=Color.RED;
         Random rand=new Random();
         x= rand.nextInt(100);
         y=rand.nextInt(100);
-        
-        JTextField xField = new JTextField(5);
-        JTextField yField = new JTextField(5);
-        JTextField vAxisField = new JTextField(5);
-        JTextField hAxisField = new JTextField(5);
-        vAxisField.setText("50");
-        hAxisField.setText("100");
-        xField.setText(""+x);
-        yField.setText(""+y);
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("x:"));
-        myPanel.add(xField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer 
-        myPanel.add(new JLabel("y:"));
-        myPanel.add(yField);
-        myPanel.add(Box.createHorizontalStrut(15));
-        myPanel.add(new JLabel("V-Axis: "));
-        myPanel.add(vAxisField);
-        myPanel.add(Box.createHorizontalStrut(15));
-        myPanel.add(new JLabel("H-Axis: "));
-        myPanel.add(hAxisField);
-        result = JOptionPane.showConfirmDialog(null, myPanel, 
-               "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
-        if(result==JOptionPane.OK_OPTION){
-            hAxis=Integer.parseInt(hAxisField.getText());
-            vAxis=Integer.parseInt(vAxisField.getText());
-            x=Integer.parseInt(xField.getText());
-            y=Integer.parseInt(yField.getText());
-        }
+        hAxis=70;
+        vAxis=50;
     }
    
     @Override
