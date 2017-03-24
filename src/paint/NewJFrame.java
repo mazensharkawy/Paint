@@ -57,6 +57,7 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
+        jButton21.setVisible(false);
     }
 
     /**
@@ -93,6 +94,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,7 +111,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 374, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,6 +280,13 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton21.setText("Add Your Ugly Shape");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -334,17 +343,21 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28))
+                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton21)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(14, 14, 14))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jButton13)
                             .addGap(6, 6, 6)
@@ -356,7 +369,8 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jButton14)
                             .addGap(6, 6, 6)
-                            .addComponent(jButton11)))
+                            .addComponent(jButton11))
+                        .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -657,16 +671,9 @@ public class NewJFrame extends javax.swing.JFrame {
             this.jLabel3.setText("Loaded");
             Class<?> classToLoad = Class.forName ("paint."+inputValue, true, child);
             
-            Constructor construct = classToLoad.getConstructor(new Class[]{});
-            Method method = classToLoad.getDeclaredMethod("draw",new Class[]{Graphics.class});
-            Object instance = construct.newInstance();
-            //Object result = method.invoke (instance);
-            Shape shape = (Shape)instance ;
-            MyCanvas panel=(MyCanvas)jPanel2;
-            panel.addShape(shape);
-            this.jLabel3.setText("size"+panel.shapes.size());
-            this.jComboBox1.addItem(inputValue+" "+counter++);
+            MyCanvas panel = (MyCanvas) this.jPanel2;
             panel.installPluginShape(((Class<? extends Shape>)classToLoad));
+            jButton21.setVisible(true);
         }catch(Exception e ){this.jLabel3.setText(e.toString());}
             //this.jLabel3.setText("Plugin Loaded");*/
     }//GEN-LAST:event_jButton18ActionPerformed
@@ -752,6 +759,24 @@ public class NewJFrame extends javax.swing.JFrame {
       
     }//GEN-LAST:event_jButton20ActionPerformed
 
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        // TODO add your handling code here:
+        MyCanvas panel=(MyCanvas)jPanel2;
+        Class<? extends Shape> classToLoad=panel.getSupportedShapes().get(panel.supportedShapes.size()-1);
+        try{Constructor construct = classToLoad.getConstructor(new Class[]{});
+            Method method = classToLoad.getDeclaredMethod("draw",new Class[]{Graphics.class});
+            Object instance = construct.newInstance();
+            //Object result = method.invoke (instance);
+            Shape shape = (Shape)instance ;
+            
+            panel.addShape(shape);
+            this.jLabel3.setText("size"+panel.shapes.size());
+            String inputValue = classToLoad.getSimpleName();
+            this.jComboBox1.addItem(inputValue+" "+counter++);
+            this.jComboBox1.setSelectedIndex(counter-1);
+        }catch(Exception e){}
+    }//GEN-LAST:event_jButton21ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -809,6 +834,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
