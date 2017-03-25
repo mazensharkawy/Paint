@@ -670,7 +670,7 @@ public class NewJFrame extends javax.swing.JFrame {
             URL[] paths={path}; 
             URLClassLoader child = new URLClassLoader(paths, this.getClass().getClassLoader());            
             this.jLabel3.setText("Loaded");
-            Class<?> classToLoad = Class.forName ("paint."+inputValue, true, child);
+            Class<?> classToLoad = Class.forName ("eg.edu.alexu.cse.oop.draw."+inputValue, true, child);
             
             MyCanvas panel = (MyCanvas) this.jPanel2;
             panel.installPluginShape(((Class<? extends Shape>)classToLoad));
