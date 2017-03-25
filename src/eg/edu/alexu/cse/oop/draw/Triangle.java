@@ -40,7 +40,7 @@ public class Triangle extends myShape implements Shape {
         width=100;
         color=Color.RED;
         fillcolor=Color.RED;
-        
+        x+=width;
     }
     
    
@@ -64,8 +64,8 @@ public class Triangle extends myShape implements Shape {
     public void draw(Graphics canvas) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Point location = new Point(x,y);
-        Point point2 = new Point(location.x+width,location.y);
-        Point point3 = new Point(location.x+(width/2),location.y - height);
+        Point point2 = new Point(location.x-(width/2),location.y+ height);
+        Point point3 = new Point(location.x+(width/2),location.y + height);
         canvas.setColor(this.color);
         /*canvas.setColor(Color.BLUE);
         canvas.drawLine(location.x,location.y,point2.x,point2.y);
